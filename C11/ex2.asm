@@ -9,4 +9,5 @@ main:
 		addu	$12,$11,$10		##Final answerd ends up being
 								##10000 which is an overflow
 								##that is equivalent to a
-								##16bit zero
+								##16bit zero but since its a
+								##32bit result we see a 10000
