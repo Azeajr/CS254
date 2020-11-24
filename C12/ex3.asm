@@ -7,6 +7,8 @@
 # instructions, put the pattern 0xFFFFFFFF into register $1. Don't use another
 # ori after the first. You will need to use more registers than $1. See how few
 # instructions you can do this in. My program has 11 instructions.
+# log_2 of 32 = 5 there fore it will take 5 sll commands combined with 5 or
+# commands
 
         .text
         .globl main
