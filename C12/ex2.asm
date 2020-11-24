@@ -12,10 +12,10 @@
         .globl main
 
 main:
-        ori $1,$0,0x02
-        ori $2,$0,0x04
-        ori $3,$0,0x08
-        ori $4,$0,0x10
-        ori $5,$0,0x20
-        ori $6,$0,0x40
-        ori $7,$0,0x80
+        ori $1,$0,0x01
+        ori $2,$0,0x02
+        ori $3,$0,0x04
+        ori $4,$0,0x08
+        ori $5,$0,0x10
+        ori $6,$0,0x20
+        ori $7,$0,0x40
