@@ -56,7 +56,7 @@ twelve: sw      $12, 12($10)
         j       end
         sll     $0, $0, $0
 thirteen:
-        sw      $13, 12,($10)
+        sw      $13, 12($10)
 
         # Loop to catch the end of program "gracefully"
 end:
