@@ -26,11 +26,13 @@ main:   li      $v0, 4
         li      $v0, 5
         syscall
 
+        move    $s1, $v0
+
         li      $v0, 4
         la      $a0, mpg
         syscall
 
-        div     $s0, $v0
+        div     $s0, $s1
         mflo    $a0
         li      $v0, 1
         syscall
