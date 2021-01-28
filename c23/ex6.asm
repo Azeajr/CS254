@@ -1,3 +1,7 @@
+# Write a program that asks the user for integers N and K and writes out the 
+# odds of winning such a lottery. This calcualates the number of possible 
+# combinations between a K and a N.  N choose K
+
         .text
         .globl  main
 
@@ -44,7 +48,14 @@ endLp:  nop
 
 
         li              $v0, 1
+        # Pseudoinstruction gets translated to 
+        # bne $t5, $zero, 4           ; 57: divu $a0, $t4, $t5 
+        # break                    
+        # divu $t4, $t5            
+        # mflo $a0
+        # Issue is that the break gets run even when $t5 is not zero.  A nop is # necessary but assembler does not insert it.
         divu            $a0, $t4, $t5
+        syscall
 
 
 end:    li          $v0, 10
