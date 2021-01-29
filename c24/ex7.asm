@@ -42,6 +42,7 @@ loop:   beq     $t4, $t0, endLp
         li      $t3, 3
         # Used div instead of divu due to the check for divide by zero error
         # that does not include a nop
+        # divu    $t5, $t5, $t3
         div     $t5, $t3
         mflo    $t5
 
