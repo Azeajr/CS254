@@ -31,7 +31,8 @@ readStr:
         lw      $ra, ($sp)
         add     $sp, $sp, 4
         
-
+        jr      $ra
+        nop
 
         .data
 promptA:.asciiz "Enter a string: "

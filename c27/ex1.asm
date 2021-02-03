@@ -37,12 +37,31 @@ main:   sub     $sp, $sp, 4
         sw      $ra, ($sp)
         sub     $sp, $sp, 4
 #####################################
-        move    $s0, $v0
+        beqz    $v0, equal
+        nop
 
-        beqz    $s0, equal
+        li      $v0, 4
+        la      $a0, prompt2
+        syscall
+
+        j       endProg
+        nop
+
+equal:  nop
+        li      $v0, 4
+        la      $a0, prompt1
+        syscall
+
+endProg:nop
+        li      $v0, 10
+        syscall
+
+        
 
 
         .data
+prompt1:.asciiz "The strings are character-by-character identical.\n"
+prompt2:.asciiz "The strings are NOT character-by-character identical.\n"
 str1:   .space  100
 str2:   .space  100
         

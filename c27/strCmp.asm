@@ -9,23 +9,25 @@
 # value in ptr1 than in ptr2
 strCmp:
 
-loopA:  lw      $t0, ($a0)
-        lw      $t1, ($a1)
+loopA:  lb      $t0, ($a0)
+        lb      $t1, ($a1)
         nop
 
         bne     $t0, $t1, notEqual
         nop
 
         beqz    $t0, endLpA
+        nop
 
-        add     $a0, $a0, 4
-        add     $a0, $a0, 4
+        add     $a0, $a0, 1
+        add     $a1, $a1, 1
 
         j       loopA
 
 endLpA: nop
 
         li      $v0, 0
+
         jr      $ra
         nop
 
