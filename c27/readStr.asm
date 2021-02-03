@@ -1,3 +1,6 @@
+# Subroutine reads a string from Std input to a buffer located at $a0 with 
+# length $a1
+
         .text
         .globl  readStr
 
@@ -8,7 +11,7 @@
 readStr:
         sub     $sp, $sp, 4
         sw      $ra, ($sp)
-
+        # Not necessary
         sub     $sp, $sp, 4
         sw      $s0, ($sp)
 
@@ -21,6 +24,12 @@ readStr:
         li      $v0, 8
         move    $a0, $s0
         syscall
+
+        add     $sp, $sp, 4
+        lw      $s0, ($sp)
+
+        add     $sp, $sp, 4
+        lw      $ra, ($sp)
 
 
         .data
