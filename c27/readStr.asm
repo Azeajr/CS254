@@ -25,11 +25,12 @@ readStr:
         move    $a0, $s0
         syscall
 
-        add     $sp, $sp, 4
         lw      $s0, ($sp)
-
         add     $sp, $sp, 4
+        
         lw      $ra, ($sp)
+        add     $sp, $sp, 4
+        
 
 
         .data
