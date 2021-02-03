@@ -1,3 +1,9 @@
+# Write a program that prompts the user for a string. The program reads in the 
+# string and then prompts for another string and reads it in. Then the program 
+# writes a message that says if the two strings are character-by-character 
+# identical.
+
+# Use at least three routines (counting main) for this.
         .text
         .globl main
 

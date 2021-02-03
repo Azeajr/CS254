@@ -1,3 +1,6 @@
+# Subroutine takes pointers for character arrays and compares the array 
+# character by character.
+
         .text
         .globl  strCmp
 # $a0   pointer to first character array
