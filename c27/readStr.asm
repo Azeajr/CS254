@@ -25,6 +25,13 @@ readStr:
         move    $a0, $s0
         syscall
 
+loopD:  lb      $t0, ($a0)
+        add     $a0, $a0, 1
+        beqz    $t0, endLpD
+        bne     $t0, 10, loopD
+
+        sb      $zero, -1($a0)
+endLpD:
         lw      $s0, ($sp)
         add     $sp, $sp, 4
         
@@ -35,4 +42,4 @@ readStr:
         nop
 
         .data
-promptA:.asciiz "Enter a string: "
+promptA:.asciiz "Enter a string:\t"

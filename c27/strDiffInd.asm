@@ -17,8 +17,12 @@ loopA:  lb      $t0, ($a0)
         lb      $t1, ($a1)
         nop
 
+        
+
         bne     $t0, $t1, notEqual
         nop
+
+        beqz    $t0, endLpA
 
         add     $a0, $a0, 1
         add     $a1, $a1, 1
