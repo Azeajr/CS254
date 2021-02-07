@@ -1,3 +1,6 @@
+# Subroutine works as expected when strings are exactly the same length.
+# Otherwise it depends on the fact that buffers are zeroed at instantiation.
+
         .text
         .globl  strDifHighli
 

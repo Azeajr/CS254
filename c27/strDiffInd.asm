@@ -1,3 +1,6 @@
+# Subroutine takes two string buffers and returns the index of the first 
+# difference between the strings.
+
         .text
         .globl  strDiffInd
 
