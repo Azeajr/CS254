@@ -3,46 +3,36 @@
 
 square:
         # $a0  numbers of characters per side
-        ble     $a0, 10, skipA
-        li      $a0, 10
+        sub             $sp, $sp, 4
+        sw              $ra, ($sp)
+
+        sub             $sp, $sp, 4
+        sw              $s0, ($sp)
+
+        sub             $sp, $sp, 4
+        sw              $s1, ($sp)
+
+        move            $s0, $a0
+
+        ble     $s0, 10, skipA
+        li      $s0, 10
 skipA:
-       
-        la      $t2, bufferA
-        li      $t3, 0xa
-        sb      $t3, ($t2)
-        add     $t2, $t2, 1
+        li      $s1, 0
+loopA:  beq     $s1, $s0, endLpA
+        move    $a0, $s0
+        jal     starline
 
-        li      $t0, 0
-loopA:  beq     $t0, $a0, endLpA
-        li      $t1, 0
-loopB:  beq     $t1, $a0, endLpB
-        li      $t3, 0x2a
-        sb      $t3, ($t2)
-        add     $t2, $t2, 1
-
-
-        add     $t1, $t1, 1
-        j       loopB
-endLpB:
-
-        li      $t3, 0xa
-        sb      $t3, ($t2)
-        add     $t2, $t2, 1
-
-
-
-        add     $t0, $t0, 1
+        add     $s1, $s1, 1
         j       loopA
 endLpA:
-        sb      $zero, ($t2)
-        add     $t2, $t2, 1
+        lw              $s1, ($sp)
+        add             $sp, $sp, 4
 
-        li      $v0, 4
-        la      $a0, bufferA
-        syscall
+        lw              $s0, ($sp)
+        add             $sp, $sp, 4
+
+        lw              $ra, ($sp)
+        add             $sp, $sp, 4
 
         jr      $ra
         nop
-
-        .data
-bufferA:  .space 144
