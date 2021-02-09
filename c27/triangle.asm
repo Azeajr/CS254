@@ -18,8 +18,8 @@ triangle:
         li      $s0, 10
 skipB:
 
-        li      $s1, 0
-loopB:  beq     $s1, $s0, endLpB
+        li      $s1, 1
+loopB:  bgt     $s1, $s0, endLpB
         move    $a0, $s1
         jal     starline
 
