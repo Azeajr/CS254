@@ -3,31 +3,57 @@
 
 starline:
         # $a0 number of * to print in line
-        ble             $a0, 10, skipC
-        li              $a0, 10
-skipC:  li              $t0, 0
-        la              $t1, buffer
-        li              $t2, 0x2a
-loopC:  beq             $t0, $a0, endLpC
-        sb              $t2, ($t1)
-        add             $t1, $t1, 1
+        sub             $sp, $sp, 4
+        sw              $s0, ($sp)
+
+        sub             $sp, $sp, 4
+        sw              $s1, ($sp)
+
+        sub             $sp, $sp, 4
+        sw              $s2, ($sp)
+
+        sub             $sp, $sp, 4
+        sw              $s3, ($sp)
+
+        move            $s0, $a0
+
+        ble             $s0, 10, skipC
+        li              $s0, 10
+skipC:  li              $s1, 0
+        la              $s2, bufferA
+        li              $s3, 0x2a
+loopC:  beq             $s1, $s0, endLpC
+        sb              $s3, ($s2)
+        add             $s2, $s2, 1
 
 
-        add             $t0, $t0, 1
+        add             $s1, $s1, 1
         j               loopC
 endLpC:
-        li              $t2, 0xa
-        sb              $t2, ($t1)
-        add             $t1, $t1, 1
+        li              $s3, 0xa
+        sb              $s3, ($s2)
+        add             $s2, $s2, 1
         
-        sb              $zero, ($t1)
+        sb              $zero, ($s2)
 
         li              $v0, 4
-        la              $a0, buffer
+        la              $a0, bufferA
         syscall
+
+        lw              $s3, ($sp)
+        add             $sp, $sp, 4
+
+        lw              $s2, ($sp)
+        add             $sp, $sp, 4
+
+        lw              $s1, ($sp)
+        add             $sp, $sp, 4
+
+        lw              $s0, ($sp)
+        add             $sp, $sp, 4
 
         jr              $ra
         nop
 
         .data
-buffer: .space  12
+bufferA:.space  12
