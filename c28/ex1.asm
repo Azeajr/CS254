@@ -19,7 +19,7 @@ main:
         sub     $sp, $sp, 4
         sw      $fp, ($sp)
 
-        addiu   $fp, $sp 8
+        sub     $fp, $sp, 8
         move    $sp, $fp
 
         li      $t0, 50
