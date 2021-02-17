@@ -28,6 +28,20 @@ main:
         ori     $t0, $zero, 11      # Loads register $8 with an 11
 
         addu    $t2, $t2, $t0       # Adds 11 to the running sum in $10
+                                    # $10 holds a bit pattern that can be 
+                                    # interpreted as 55
 
         ori     $v0, $zero, 10      # Gracefully exits main process
+                                    # ?: It was interesting that this worked 
+                                    # given that exception handler had not been 
+                                    # loaded. It was my origignal understanding 
+                                    # that syscall were handled by exception 
+                                    # handler.
+                                    #
+                                    # ?: I currently think that syscall is not 
+                                    # necessarilly processsed by excpetion 
+                                    # handler.  Instead, exception handler 
+                                    # literally processes interrupts/exceptions.
+                                    # I am sure my understanding will change 
+                                    # with time in the course.
         syscall
