@@ -10,7 +10,7 @@ Triangle:
         sub     $sp, $sp, 4
         sw      $s0, ($sp)
 
-        sub     $fp, $sp, 4
+        sub     $fp, $sp, 0
         move    $sp, $fp
 
 
@@ -32,7 +32,7 @@ recurse:
         add     $v0, $v0, $s0
 
 Epilogue:
-        add     $sp, $fp, 4
+        add     $sp, $fp, 0
 
         lw      $s0, ($sp)
         add     $sp, $sp, 4

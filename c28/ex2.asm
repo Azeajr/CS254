@@ -35,7 +35,8 @@ main:
 
         move    $a0, $s0
         jal Triangle
-        move    $v0, $a0
+
+        move    $a0, $v0
         li      $v0, 1
         syscall
 
