@@ -55,4 +55,3 @@ main:
 prompt1:.asciiz "Enter a N: "
 prompt2:.asciiz "\nTriangle( "
 prompt3:.asciiz " ) = "
-newline:.asciiz "\n"
