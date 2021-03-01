@@ -1,4 +1,14 @@
 ## Program to add two plus three
+
+# Modify the program so that it puts a 1 in register $1, a 2 in register $2, a 
+# 3 in register $3, and so on up to register $12 (or higher if you wish). Run 
+# the program by pushing F10 to single step. Check the register display after 
+# each step.
+
+# Notice that in the QtSpim display the machine instructions of this program 
+# are loaded into memory starting at address 0x400000, the beginning of the 
+# text segment of memory.
+
 		.text
 		.globl	main
 		
