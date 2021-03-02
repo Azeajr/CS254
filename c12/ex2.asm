@@ -12,10 +12,17 @@
         .globl main
 
 main:
-        ori $1,$0,0x01
-        ori $2,$0,0x02
-        ori $3,$0,0x04
-        ori $4,$0,0x08
-        ori $5,$0,0x10
-        ori $6,$0,0x20
-        ori $7,$0,0x40
+        ori     $1,$0,0x01
+        #ori     $2,$0,0x02     First attempt. Misunderstood project specs.
+        #ori     $3,$0,0x04
+        #ori     $4,$0,0x08
+        #ori     $5,$0,0x10
+        #ori     $6,$0,0x20
+        #ori     $7,$0,0x40
+        sll     $2, $1, 1
+        sll     $3, $1, 2
+        sll     $4, $1, 3
+        sll     $5, $1, 4
+        sll     $6, $1, 5
+        sll     $7, $1, 6
+
