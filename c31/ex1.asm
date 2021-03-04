@@ -23,7 +23,7 @@ main:
 
         li      $v0, 6
         syscall
-        s.s     $f0, 0($fp)
+        s.s     $f0, 0($fp)     # Store float at x
 
         la      $a0, prompt2
         li      $v0, 4
@@ -31,30 +31,30 @@ main:
 
         li      $v0, 6
         syscall
-        s.s     $f0, 4($fp)
+        s.s     $f0, 4($fp)     # Store float at y
 
 
         li.s    $f0, 5.4
         l.s     $f1, 0($fp)
-        mul.s  $f0, $f1, $f0
+        mul.s  $f0, $f1, $f0    # $f0 = 5.4x
 
         l.s     $f1, 4($fp)
-        mul.s  $f12, $f1, $f0
+        mul.s  $f12, $f1, $f0   # $f12 = 5.4xy
 
         li.s    $f0, -12.3
         l.s     $f1, 4($fp)
-        mul.s  $f0, $f1, $f0
+        mul.s  $f0, $f1, $f0    # $f0 = -12.3y
 
-        add.s   $f12, $f12, $f0
+        add.s   $f12, $f12, $f0 # $f12 = 5.4xy - 12.3y
         
         li.s    $f0, 18.23
         l.s     $f1, 0($fp)
-        mul.s  $f0, $f1, $f0
+        mul.s  $f0, $f1, $f0    # $f0 = 18.23x
 
-        add.s   $f12, $f12, $f0
+        add.s   $f12, $f12, $f0 # $f12 = 5.4xy - 12.3y + 18.23x
 
         li.s      $f0, -8.23
-        add.s   $f12, $f12, $f0
+        add.s   $f12, $f12, $f0 # $f12 = 5.4xy - 12.3y + 18.23x - 8.23
 
         la      $a0, prompt3
         li      $v0, 4
