@@ -1,4 +1,4 @@
-## CS 254 Program 5
+## CS 254 Program 4
 ##
 ## Compute 7x^4+2x^3+10x^2-3x+17 using Horner's Method
 ##
