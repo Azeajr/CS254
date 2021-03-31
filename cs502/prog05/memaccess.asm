@@ -32,8 +32,8 @@ main:
         mflo    $13             # $13 = 25xy - 6y
 
         
-        ori     $12, $0, 10     # $12 longer needs to store y since I am done 
-                                # with that variable
+        ori     $12, $0, 10     # $12 no longer needs to store y since I am
+                                # done with that variable
         sll     $0, $0, 0
         mult    $12, $11        # 10x
         mflo    $12             # $11 = 10x
