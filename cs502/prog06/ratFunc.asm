@@ -35,6 +35,9 @@ main:
                                 # instruction doesnt affect the final outcome 
                                 # of the subroutine when branching.
 
+        sw      $0, 4($t0)      # Stores 0 in error since division by zero did 
+                                # not occur.
+
         ori     $t3, $0, 8      # $t3 = 8
         mult    $t3, $t1        # Multiply $t3 by x
         mflo    $t3             # $t3 = 8x
@@ -68,7 +71,7 @@ zero:   #addi    $t2, $t2, 1    # Adding 1 to $t2 means that $t2 = 1 since we
 end:    sll     $0, $0, 0
 
         .data
-x:      .word   2               # Error should be set to 1 when 
+x:      .word   6               # Error should be set to 1 when 
                                 # x=2 or x=-2 and 2/3
                                 # since those are the zeros of the denominator.
                                 # The rational number is not possible in this 
