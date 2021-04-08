@@ -16,6 +16,8 @@
 main:
         lui     $t0, 0x1000     # Base address to our data section
         lw      $t1, 0($t0)     # $t1 = x
+                                # nop not needed since $t1 is not used in the 
+                                # instruction following the load
         ori     $t2, $0, 3      # $t2 = 3
         mult    $t2, $t1        # Multiply $t2 by x
         mflo    $t2             # $t2 = 3x
@@ -71,12 +73,19 @@ zero:   #addi    $t2, $t2, 1    # Adding 1 to $t2 means that $t2 = 1 since we
 end:    sll     $0, $0, 0
 
         .data
-x:      .word   6               # Error should be set to 1 when 
+x:      .word   -2              # Error should be set to 1 when 
                                 # x=2 or x=-2 and 2/3
                                 # since those are the zeros of the denominator.
                                 # The rational number is not possible in this 
                                 # implementation, we would need floating point
                                 # numbers.
+                                # Became curious while testing x as to what 
+                                # values got me negative quotients.  Graphed it 
+                                # on desmos and saw that -1, -2 and 1 should 
+                                # result in negative quotients.  Tested them to 
+                                # aleviate any anxiety over errors. x=0 also
+                                # results in a negative value but our program 
+                                # is not designed to reflect that.
 error:  .word   0
 ratio:  .word   0
 remain: .word   0
