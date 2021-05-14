@@ -29,8 +29,6 @@ endLPA: la      $a0, newline
 
         jr      $ra
 
-
-
         .data
 space:  .asciiz " "
 newline:.asciiz "\n"
