@@ -9,6 +9,15 @@ initList:
         sw      $s0, ($sp)
 
         sub     $sp, $sp, 4
+        sw      $s1, ($sp)
+
+        sub     $sp, $sp, 4
+        sw      $s2, ($sp)
+
+        sub     $sp, $sp, 4
+        sw      $s3, ($sp)
+
+        sub     $sp, $sp, 4
         sw      $fp, ($sp)
 
         sub     $fp, $sp, 12
@@ -28,48 +37,48 @@ initList:
         li      $a1, 200
         syscall
 
-        li      $t0, 0
-        lb      $t1, ($a0)
-loopB:  beqz    $t1, endLpB
-        beq     $t1, 10, skipB
-        add     $t0, $t0, 1
+        li      $s1, 0
+        lb      $s2, ($a0)
+loopB:  beqz    $s2, endLpB
+        beq     $s2, 10, skipB
+        add     $s1, $s1, 1
 skipB:  add     $a0, $a0, 1
 
-        lb      $t1, ($a0)
+        lb      $s2, ($a0)
         j       loopB
 endLpB: 
 
 
-        add     $t0, $t0, 5 # 4 bytes for next node pointer and 1 byte for null 
+        add     $s1, $s1, 5 # 4 bytes for next node pointer and 1 byte for null 
                             # termination
-        move    $a0, $t0
+        move    $a0, $s1
         li      $v0, 9
         syscall
 
         move    $s0, $v0
 
-        la      $t0, buffer
-        add     $t1, $s0, 4
-        lb      $t2, ($t0)
+        la      $s1, buffer
+        add     $s2, $s0, 4
+        lb      $s3, ($s1)
 
-loopC:  beqz    $t2, endLpC
-        beq     $t2, 10, skipC
-        sb      $t2, ($t1)
-        add     $t1, $t1, 1
-skipC:  add     $t0, $t0, 1
+loopC:  beqz    $s3, endLpC
+        beq     $s3, 10, skipC
+        sb      $s3, ($s2)
+        add     $s2, $s2, 1
+skipC:  add     $s1, $s1, 1
         
-        lb      $t2, ($t0)
+        lb      $s3, ($s1)
 
         j       loopC
-endLpC: sb      $t2, ($t1)      # store the null byte to terminate the string 
+endLpC: sb      $s3, ($s2)      # store the null byte to terminate the string 
                                 # inside the node
 
         sw      $s0, 0($fp)     # Pointer to head
         sw      $s0, 8($fp)
 
-        lw      $t0, 4($fp)
-        sub     $t0, $t0, 1
-        sw      $t0, 4($fp)     # Marks the completion of the head node
+        lw      $s1, 4($fp)
+        sub     $s1, $s1, 1
+        sw      $s1, 4($fp)     # Marks the completion of the head node
 
 
 loopD:  beqz    $s0, endLpD
@@ -82,49 +91,49 @@ loopD:  beqz    $s0, endLpD
         li      $a1, 200
         syscall
 
-        li      $t0, 0
-        lb      $t1, ($a0)
-loopBD: beqz    $t1, endLpBD
-        beq     $t1, 10, skipBD
-        add     $t0, $t0, 1
+        li      $s1, 0
+        lb      $s2, ($a0)
+loopBD: beqz    $s2, endLpBD
+        beq     $s2, 10, skipBD
+        add     $s1, $s1, 1
 skipBD: add     $a0, $a0, 1
-        lb      $t1, ($a0)
+        lb      $s2, ($a0)
         j       loopBD
 endLpBD: 
 
 
-        add     $t0, $t0, 5 # 4 bytes for next node pointer and 1 byte for null 
+        add     $s1, $s1, 5 # 4 bytes for next node pointer and 1 byte for null 
                             # termination
-        move    $a0, $t0
+        move    $a0, $s1
         li      $v0, 9
         syscall
 
         move    $s0, $v0
 
-        la      $t0, buffer
-        add     $t1, $s0, 4
-        lb      $t2, ($t0)
+        la      $s1, buffer
+        add     $s2, $s0, 4
+        lb      $s3, ($s1)
 
-loopCD: beqz    $t2, endLpCD
-        beq     $t2, 10, skipCD
-        sb      $t2, ($t1)
-        add     $t1, $t1, 1
-skipCD: add     $t0, $t0, 1
-        lb      $t2, ($t0)
+loopCD: beqz    $s3, endLpCD
+        beq     $s3, 10, skipCD
+        sb      $s3, ($s2)
+        add     $s2, $s2, 1
+skipCD: add     $s1, $s1, 1
+        lb      $s3, ($s1)
 
         j       loopCD
-endLpCD:sb      $t2, ($t1)
+endLpCD:sb      $s3, ($s2)
 
-        lw      $t0, 8($fp)
-        sw      $s0, 0($t0)
+        lw      $s1, 8($fp)
+        sw      $s0, 0($s1)
 
         sw      $s0, 8($fp)
 
-        lw      $t0, 4($fp)
-        sub     $t0, $t0, 1
-        sw      $t0, 4($fp)
+        lw      $s1, 4($fp)
+        sub     $s1, $s1, 1
+        sw      $s1, 4($fp)
 
-        move    $s0, $t0
+        move    $s0, $s1
 
         j       loopD
 endLpD:
@@ -137,6 +146,15 @@ endLpD:
         add     $sp, $fp, 12
 
         lw      $fp, ($sp)
+        add     $sp, $sp, 4
+
+        lw      $s3, ($sp)
+        add     $sp, $sp, 4
+
+        lw      $s2, ($sp)
+        add     $sp, $sp, 4
+
+        lw      $s1, ($sp)
         add     $sp, $sp, 4
 
         lw      $s0, ($sp)
