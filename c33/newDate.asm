@@ -1,3 +1,12 @@
+# Subroutine 
+################################################################################
+# (void *) newDate(void)
+# $a0 = argument
+# $s0 is the base address of the structure.
+# 0($s0) = day
+# 4($s0) = month
+# 8($s0) = year
+###############################################################################
         .text
         .globl newDate
 newDate:
